@@ -15,6 +15,7 @@ const initialSettings: ReactTagInputProps = {
   removeOnBackspace: true,
   validator: undefined,
   buttonVariant: true,
+  removePlaceholderOnIndex: undefined
 };
 
 function Example() {
@@ -56,6 +57,15 @@ function Example() {
               type="number"
               value={settings.maxTags}
               onChange={(e) => setSettings({ ...settings, maxTags: parseInt(e.target.value, 10) })}
+            />
+          </label>
+
+          <label>
+            Remove placeholder on index
+            <input
+              type="number"
+              value={settings.removePlaceholderOnIndex}
+              onChange={(e) => setSettings({ ...settings, removePlaceholderOnIndex: parseInt(e.target.value, 10) })}
             />
           </label>
         </div>

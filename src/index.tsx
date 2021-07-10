@@ -17,6 +17,7 @@ export interface ReactTagInputProps {
   buttonStyle?: CSSProperties;
   removeButtonText?: (() => any) | string;
   addButtonText?: (() => any) | string;
+  removePlaceholderOnIndex?: number;
 }
 
 interface State {
@@ -133,7 +134,7 @@ export default class ReactTagInput extends React.Component<ReactTagInputProps, S
 
     const {input} = this.state;
 
-    const {tags, placeholder, maxTags, editable, readOnly, validator, removeOnBackspace, buttonVariant, addButtonText, removeButtonText, buttonStyle} = this.props;
+    const {tags, placeholder, maxTags, editable, readOnly, validator, removeOnBackspace, buttonVariant, addButtonText, removeButtonText, buttonStyle, removePlaceholderOnIndex} = this.props;
 
     const maxTagsReached = maxTags !== undefined ? tags.length >= maxTags : false;
 
@@ -164,7 +165,7 @@ export default class ReactTagInput extends React.Component<ReactTagInputProps, S
             ref={this.inputRef}
             value={input}
             className={classSelectors.input}
-            placeholder={ tags.length === 0 ? placeholder || "Type and press enter" : "" }
+            placeholder={ removePlaceholderOnIndex !== undefined ? tags.length < removePlaceholderOnIndex ? placeholder || "Type and press enter" : "" : placeholder || "Type and press enter"}
             onChange={this.onInputChange}
             onKeyDown={this.onInputKeyDown}
         />
