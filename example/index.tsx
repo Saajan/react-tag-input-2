@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactTagInput, {ReactTagInputProps} from "../src/index";
+import ReactTagInput, { ReactTagInputProps } from "../src/index";
 import "../src/styles/index.scss";
 
 const root = document.getElementById("root");
 
 const initialSettings: ReactTagInputProps = {
   tags: [],
-  onChange: (tags) => {},
+  onChange: (tags) => { },
   placeholder: "Types and press enter",
   maxTags: 10,
   editable: true,
@@ -21,12 +21,18 @@ function Example() {
   const [tags, setTags] = React.useState<string[]>(["machine-1", "machine-2"]);
   const [settings, setSettings] = React.useState(initialSettings);
   console.log(tags, settings);
+
+  const handleReactTagInputChanged = (value) => {
+    console.log('on changed : '+ value);
+    setTags(value);
+  };
+
   return (
     <>
       <ReactTagInput
         {...settings}
         tags={tags}
-        onChange={(value) => setTags(value)}
+        onChange={handleReactTagInputChanged}
         buttonVariant={true}
         addButtonText={() => <span>Add!</span>}
         removeButtonText={"Remove!"}
@@ -100,4 +106,4 @@ function Example() {
   );
 }
 
-ReactDOM.render(<Example/>, root);
+ReactDOM.render(<Example />, root);
