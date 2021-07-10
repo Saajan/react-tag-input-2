@@ -1,6 +1,6 @@
 {
   "name": "react-tag-input-2",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A simple tag input component for React with editable tags",
   "main": "./build/umd/index.min.js",
   "module": "./build/module/index.js",
